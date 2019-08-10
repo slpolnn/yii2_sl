@@ -13,6 +13,7 @@ $config = [
         '@npm'   => '@vendor/npm-asset',
     ],
     'components' => [
+        'activity'=>['class'=>\app\components\ActivityComponent::class, 'baseModel' => \app\models\Activity::class],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'qF0HZePKU7AfoDCbPhI8nYxF2h36JkVM',
@@ -20,10 +21,10 @@ $config = [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
-        'user' => [
+        'user' => array(
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
-        ],
+        ),
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],

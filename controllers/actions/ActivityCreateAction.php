@@ -10,7 +10,19 @@ class ActivityCreateAction extends Action
     public $name;
     public function run()
     {
-        $model=new Activity();
+        $model= \Yii::$app->activity->getModel();
+
+        if(\Yii::$app->request->isPost){
+            $model->load(\Yii::$app->request->post());
+            if(\Yii::$app->activity->createActivity($model)){
+
+            }else{
+                print_r($model->getErrors());
+            }
+ //           print_r($model->getAttributes());
+ //           exit();
+        }
+
         return $this->controller->render('create',['name'=>$this->name,'model'=>$model]);
     }
 }

@@ -21,9 +21,18 @@ class Activity extends Model
         return [
             ['title','required'],
             ['description','string','min' => 5],
-            ['isBlocked','boolean']
+            ['isBlocked','boolean'],
+            ['dateStart','string']
         ];
     }
 
-
+    public function attributeLabels()
+    {
+        return [
+          'title'=>'Событие',
+          'description'=>'Описание события',
+          'dateStart'=>'Дата проведения',
+          'isBlocked'=>'Блокировка события'
+        ];
+    }
 }
