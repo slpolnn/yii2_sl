@@ -14,6 +14,10 @@ class Activity extends Model
 
     public $dateStart;
 
+    public $dateEnd;
+
+    public $repeated;
+
     public $isBlocked;
 
     public function rules()
@@ -22,7 +26,9 @@ class Activity extends Model
             ['title','required'],
             ['description','string','min' => 5],
             ['isBlocked','boolean'],
-            ['dateStart','string']
+            ['dateStart','string'],
+            ['dateEnd','string'],
+            ['repeated','boolean']
         ];
     }
 
@@ -31,8 +37,10 @@ class Activity extends Model
         return [
           'title'=>'Событие',
           'description'=>'Описание события',
-          'dateStart'=>'Дата проведения',
-          'isBlocked'=>'Блокировка события'
+          'dateStart'=>'Дата начала',
+          'dateEnd'=>'Дата окончания',
+          'isBlocked'=>'Блокировка события',
+          'repeated'=>'Повторять событие'
         ];
     }
 }
