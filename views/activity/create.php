@@ -7,7 +7,7 @@ use kartik\datetime\DateTimePicker;
 <div class="row">
     <div class="col-md-12">
         <h3>Создание события</h3>
-        <strong><?=$name?></strong>
+
 
         <?php $form=\yii\bootstrap\ActiveForm::begin();?>
         <?=$form->field($model, 'title')?>
@@ -15,7 +15,7 @@ use kartik\datetime\DateTimePicker;
         <?=$form->field($model, 'dateStart')->widget(DateTimePicker::class,[
                 'convertFormat' => true,
                 'pluginOptions' => [
-                        'format'=>'dd.MM.yy hh:i',
+                        'format'=>'dd.MM.yyyy hh:i',
                         'autoclose'=>true,
                         'weekStart'=>1,
                         'todayBtn'=>true
@@ -24,7 +24,7 @@ use kartik\datetime\DateTimePicker;
         <?=$form->field($model, 'dateEnd')->widget(DateTimePicker::class,[
             'convertFormat' => true,
             'pluginOptions' => [
-                'format'=>'dd.MM.yy hh:i',
+                'format'=>'dd.MM.yyyy hh:i',
                 'autoclose'=>true,
                 'weekStart'=>1,
                 'todayBtn'=>true

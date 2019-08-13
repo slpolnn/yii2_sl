@@ -55,10 +55,11 @@ class Activity extends Model
     public function rules()
     {
         return [
-            ['title', 'trim'],
             ['title','required','message' => 'Данное поле обязательно для заполнения'],
+            ['title', 'trim'],
             ['dateStart','required','message' => 'Данное поле обязательно для заполнения'],
             ['description', 'string', 'min' => 5, 'max' => 150],
+            [['dateStart','dateEnd'],'string'],
             [['dateStart','dateEnd'], 'date', 'format' => 'php:Y-m-d'],
             ['file','file','extensions' => ['jpg','png']],
             ['repeatedType','in','range' => array_keys(self::REPEATED_TYPE)],
@@ -66,7 +67,7 @@ class Activity extends Model
             ['email','required','when' => function($model){
                return $model->useNotification?true:false;
             }],
-            [['isBlocked', 'isRepeated', 'useNotification'], 'boolean'],
+            [['isBlocked', 'repeated', 'useNotification'], 'boolean'],
         ];
     }
 
