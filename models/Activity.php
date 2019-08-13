@@ -5,6 +5,7 @@ namespace app\models;
 
 
 use yii\base\Model;
+use yii\validators\Validator;
 
 class Activity extends Model
 {
@@ -54,13 +55,18 @@ class Activity extends Model
     public function rules()
     {
         return [
-            ['title','required'],
-            ['description','string','min' => 5],
-            ['isBlocked','boolean'],
-            ['dateStart','string'],
-            ['dateEnd','string'],
-            ['repeated','boolean'],
-            ['file','file', 'maxFiles' => 3]
+            ['title', 'trim'],
+            ['title','required','message' => 'Данное поле обязательно для заполнения'],
+            ['dateStart','required','message' => 'Данное поле обязательно для заполнения'],
+            ['description', 'string', 'min' => 5, 'max' => 150],
+            [['dateStart','dateEnd'], 'date', 'format' => 'php:Y-m-d'],
+            ['file','file','extensions' => ['jpg','png']],
+            ['repeatedType','in','range' => array_keys(self::REPEATED_TYPE)],
+            ['email','email'],
+            ['email','required','when' => function($model){
+               return $model->useNotification?true:false;
+            }],
+            [['isBlocked', 'isRepeated', 'useNotification'], 'boolean'],
         ];
     }
 
