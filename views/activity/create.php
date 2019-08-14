@@ -34,7 +34,7 @@ use kartik\datetime\DateTimePicker;
         <?=$form->field($model, 'repeated')->checkbox() ?>
         <?=$form->field($model,'repeatedType')->dropDownList($model::REPEATED_TYPE)?>
         <?=$form->field($model, 'useNotification')->checkbox() ?>
-        <?=$form->field($model, 'email')?>
+        <?=$form->field($model, 'email',['enableAjaxValidation'=>true,'enableClientValidation'=>false]);?>
         <?=$form->field($model, 'file[]')->fileInput(['multiple'=>true, 'accept'=>'image/*'])?>
         <div class="form-group">
             <button class="btn btn-default" type="submit">Создать</button>
