@@ -61,7 +61,7 @@ class Activity extends Model
             ['description', 'string', 'min' => 5, 'max' => 150],
             [['dateStart','dateEnd'],'string'],
             [['dateStart','dateEnd'], 'date', 'format' => 'php:Y-m-d'],
-            ['file','file','extensions' => ['jpg','png']],
+            [['file'],'file', 'extensions' => 'png, jpg', 'maxFiles' => 4],
             ['repeatedType','in','range' => array_keys(self::REPEATED_TYPE)],
             ['email','email'],
             ['email','required','when' => function($model){
